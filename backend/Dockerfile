@@ -11,14 +11,27 @@ RUN apt-get update && \
 WORKDIR /app
 
 # Copy package files and install dependencies
-COPY package*.json ./
+# 4. FIX: Copy package files from the 'backend' folder
+# Since Context is '.', we must prefix with 'backend/'
+COPY backend/package*.json ./
 RUN npm install
 
 # Copy the rest of the backend source code
-COPY . .
+# 6. FIX: Copy the backend source code
+COPY backend/ .
 
 # Expose the internal port the Express app listens on
 EXPOSE 3000
 
 # Run in development mode (or use 'npm start' for production)
-CMD ["npm", "run", "dev"]
+# CMD ["npm", "run", "dev"]
+# 8. PRODUCTION CMD: Use 'npm start' or 'node' for Render
+# 'npm run dev' is for your laptop; 'npm start' is for the cloud
+CMD ["npm", "start"]
+
+# ⚠️ Why you must change npm run dev to npm start
+# On Render, you are in a Production environment.
+
+# npm run dev usually triggers tsx or nodemon, which watch for file changes. This uses extra memory and can make your container crash on Render's free tier.
+
+# npm start usually triggers node dist/index.js or a direct execution, which is faster and more stable for a live website.
