@@ -28,7 +28,7 @@ EXPOSE 3000
 # 8. PRODUCTION CMD: Use 'npm start' or 'node' for Render
 # 'npm run dev' is for your laptop; 'npm start' is for the cloud
                         # CMD ["npm", "start"]
-CMD ["npx", "tsx", "src/index.ts"]
+CMD ["npx", "tsx", "index.ts"]
 # ⚠️ Why you must change npm run dev to npm start
 # On Render, you are in a Production environment.
 
