@@ -27,11 +27,22 @@ EXPOSE 3000
 # CMD ["npm", "run", "dev"]
 # 8. PRODUCTION CMD: Use 'npm start' or 'node' for Render
 # 'npm run dev' is for your laptop; 'npm start' is for the cloud
-CMD ["npm", "start"]
-
+                        # CMD ["npm", "start"]
+CMD ["npx", "tsx", "src/index.ts"]
 # ⚠️ Why you must change npm run dev to npm start
 # On Render, you are in a Production environment.
 
 # npm run dev usually triggers tsx or nodemon, which watch for file changes. This uses extra memory and can make your container crash on Render's free tier.
 
-# npm start usually triggers node dist/index.js or a direct execution, which is faster and more stable for a live website.
+# npm start usually triggers node dist/index.js or a direct execution, which is faster and more stable for a live website.]
+
+
+
+# With this:
+                        # CMD ["npx", "tsx", "src/index.ts"]
+# Why this happened?
+# Local vs. Cloud: Locally, you were likely running npm run dev (which uses tsx).
+
+# Missing Build Step: In your package.json, the start script is likely set to node dist/index.js. However, you didn't include a RUN npm run build step in your Dockerfile to convert your .ts files into .js files.
+
+# The Solution: Using npx tsx tells the container to run the TypeScript file directly, exactly like your laptop does.
