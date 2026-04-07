@@ -1,60 +1,3 @@
-// import express, { type Request, Response, NextFunction } from "express";
-// import cors from "cors"; // ADDED: Critical for decoupled frontend/backend
-// import { registerRoutes } from "./routes";
-// import { connectDB } from "./db";
-// import { LocalCompilerService } from "./services/local-compiler";
-// import dotenv from 'dotenv';
-
-// dotenv.config();
-
-// const app = express();
-
-// // Middleware
-// app.use(cors()); // Allow your Frontend (port 5173) to talk to this Backend (port 3000)
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
-
-// // Simple Logging Middleware
-// app.use((req, res, next) => {
-//   const start = Date.now();
-//   res.on("finish", () => {
-//     const duration = Date.now() - start;
-//     if (req.path.startsWith("/api")) {
-//       console.log(`${req.method} ${req.path} ${res.statusCode} in ${duration}ms`);
-//     }
-//   });
-//   next();
-// });
-
-// (async () => {
-//   // 1. Connect DB
-//   await connectDB();
-
-//   // 2. Initialize Java Compiler
-//   try {
-//     await LocalCompilerService.initialize();
-//     console.log('✅ Local Java compiler initialized');
-//   } catch (error) {
-//     console.error('❌ Java compiler init failed. Check JDK installation.');
-//   }
-
-//   // 3. Register Routes
-//   const httpServer = await registerRoutes(app);
-
-//   // 4. Global Error Handler
-//   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-//     const status = err.status || 500;
-//     res.status(status).json({ error: err.message || "Internal Server Error" });
-//   });
-
-//   // 5. Start Server
-//   const PORT = process.env.PORT || 3000;
-//   httpServer.listen(PORT, () => {
-//     console.log(`🚀 API Server running on http://localhost:${PORT}`);
-//     console.log(`📝 Access Health Check: http://localhost:${PORT}/api/health`);
-//   });
-// })();
-
 import express, { type Request, Response, NextFunction } from "express";
 import cors from "cors"; 
 import { registerRoutes } from "./routes";
@@ -86,6 +29,10 @@ app.use((req, res, next) => {
     }
   });
   next();
+});
+
+app.get("/", (req, res) => {
+  res.send("🚀 DevFlow API is running perfectly!");
 });
 
 (async () => {
