@@ -12,8 +12,15 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  process.env.CLIENT_URL
+].filter((origin): origin is string => !!origin); // This removes undefined and satisfies TS
+
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5174"], // Allow both common Vite ports
+  origin: allowedOrigins, // Allow both common Vite ports
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
