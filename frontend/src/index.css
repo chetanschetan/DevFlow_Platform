@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+   /* High-End "Studio" Light Mode */
+    --background: 240 10% 98%;      /* Very soft warm white */
+    --foreground: 240 10% 4%;       /* Near black-ink */
+    --muted: 240 5% 90%;
+    --muted-foreground: 240 5% 45%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 4%;
+    --border: 240 6% 90%;
+    
+    /* THE NEW ACTION COLOR: Cyber-Teal */
+    --primary: 173 80% 40%;         
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 240 5% 96%;
+    --accent: 173 80% 95%;          /* Soft teal glow */
+    --radius: 0.4rem;               /* Sharp, professional edges */
+    --destructive: 0 84% 60%;         /* Bright Warning Red */
+    --destructive-foreground: 210 40% 98%;
+    --destructive: 350 80% 50%;       /* Deep Vivid Crimson */
+    --destructive-foreground: 210 40% 98%;
+  }
+
+  .dark {
+    /* THE "CYBER" DARK MODE - Deep Charcoal & Teal */
+    --background: 240 10% 4%;       /* The "Black Ink" look */
+    --foreground: 0 0% 98%;
+    --muted: 240 5% 15%;
+    --muted-foreground: 240 5% 65%;
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 98%;
+    --border: 240 5% 12%;           /* Very subtle borders */
+    
+    --primary: 173 80% 50%;         /* Bright glowing teal */
+    --primary-foreground: 240 10% 4%;
+    
+    --accent: 240 5% 15%;
+    --ring: 173 80% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  /* --- Professionalized UI Components --- */
+  
+  .stats-card {
+    @apply border border-border bg-card p-6 rounded-xl transition-all hover:shadow-md;
+    border-left: 4px solid hsl(var(--primary));
+  }
+  
+  .monaco-container {
+    @apply rounded-lg border border-border overflow-hidden;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    background: hsl(222, 47%, 4%);
+  }
+
+  .otp-input {
+    @apply w-12 h-12 text-center text-xl font-bold bg-background border-2 border-muted rounded-lg transition-all focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none;
+  }
+  
+  .activity-timeline {
+    @apply relative pl-8 border-l-2 border-muted ml-2 space-y-6;
+  }
+  
+  .activity-item::before {
+    @apply content-[''] absolute -left-[39px] top-1 w-4 h-4 rounded-full bg-primary border-4 border-background shadow-sm;
+  }
+  
+  /* --- Enhanced Question Interface --- */
+  
+  .question-header {
+    @apply flex justify-between items-center mb-6 border-b pb-4;
+  }
+  
+  .question-title {
+    @apply text-2xl font-bold tracking-tight text-foreground;
+  }
+  
+  .question-badge {
+    @apply text-xs font-medium px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20;
+  }
+  
+  .question-card {
+    @apply rounded-xl border border-border bg-card shadow-sm overflow-hidden;
+  }
+  
+  .test-case-item {
+    @apply p-4 bg-muted/30 border border-border rounded-lg mb-3;
+  }
+  
+  .test-case-code {
+    @apply mt-2 font-mono text-xs bg-black/5 dark:bg-black/40 p-3 rounded border border-border/50;
+  }
+
+  /* --- Results UI --- */
+  
+  .results-item {
+    @apply p-4 rounded-xl border transition-all;
+  }
+  
+  .results-pass {
+    @apply bg-green-500/5 border-green-500/20 text-green-700 dark:text-green-400;
+  }
+  
+  .results-fail {
+    @apply bg-red-500/5 border-red-500/20 text-red-700 dark:text-red-400;
+  }
+
+  /* --- Code Editor Components --- */
+  
+  .code-editor-header {
+    @apply flex justify-between items-center bg-muted/50 p-3 border-b border-border;
+  }
+
+  .execution-success {
+    @apply p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-700 dark:text-green-300;
+  }
+  
+  .execution-error {
+    @apply p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-700 dark:text-red-300;
+  }
+
+  .loading-spinner {
+    @apply w-5 h-5 border-2 border-primary/20 border-t-primary rounded-full animate-spin;
+  }
+}

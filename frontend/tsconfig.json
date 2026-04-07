@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    /* FIX: We remove baseUrl and use the modern paths syntax.
+       The "./src/*" tells TS exactly where @ maps to relative to this file.
+    */
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "src",             // Your React code
+    "vite.config.ts",  // The config file
+    "vite.ts",         // YOUR FILE (Add this specifically if it's in the root)
+    "scripts/**/*"     // Any other scripts outside src
+  ],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
