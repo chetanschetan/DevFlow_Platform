@@ -41,7 +41,7 @@ export default function Login() {
           <div className="flex justify-center mb-4">
             <Code className="h-12 w-12 text-primary" />
           </div>
-          <CardTitle className="text-2xl">Welcome to CodeGrade</CardTitle>
+          <CardTitle className="text-2xl">Welcome to DevFlow</CardTitle>
           <CardDescription>Sign in to your account</CardDescription>
         </CardHeader>
         <CardContent>

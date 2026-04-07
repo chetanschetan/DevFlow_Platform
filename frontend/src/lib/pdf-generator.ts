@@ -189,7 +189,7 @@ private checkAndAddPage() {
     const { student, submissions, questions } = content;
     
     // Header
-    this.addTitle('CodeGrade - Student Performance Report', 18);
+    this.addTitle('DevFlow - Student Performance Report', 18);
     this.addText(`Generated on: ${new Date(content.generatedAt).toLocaleString()}`);
     this.currentY += 10;
 

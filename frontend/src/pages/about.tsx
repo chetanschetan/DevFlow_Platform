@@ -7,10 +7,10 @@ export default function About() {
       <div className="py-16">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            About <span className="text-primary">CodeGrade</span>
+            About <span className="text-primary">DevFlow</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            CodeGrade is a comprehensive platform designed to revolutionize Java programming education. 
+            DevFlow is a comprehensive platform designed to revolutionize Java programming education. 
             We provide tools for creating assignments, executing code, and tracking student progress.
           </p>
         </div>

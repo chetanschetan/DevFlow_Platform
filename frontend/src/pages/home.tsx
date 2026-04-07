@@ -85,7 +85,7 @@ export default function Home() {
             <CardHeader>
               <CardTitle className="text-2xl">Ready to Start?</CardTitle>
               <CardDescription>
-                Join CodeGrade today and transform your programming education experience.
+                Join DevFlow today and transform your programming education experience.
               </CardDescription>
             </CardHeader>
             <CardContent>
